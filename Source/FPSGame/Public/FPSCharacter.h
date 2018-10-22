@@ -13,6 +13,7 @@ class AFPSProjectile;
 class USoundBase;
 class UAnimSequence;
 
+class UPawnNoiseEmitterComponent;
 
 UCLASS()
 class AFPSCharacter : public ACharacter
@@ -32,6 +33,12 @@ protected:
 	/** First person camera */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera")
 	UCameraComponent* CameraComponent;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "AI")
+	UPawnNoiseEmitterComponent* NoiseEmitterComponent;
+
+	UFUNCTION(Server, Reliable, WithValidation)
+	void ServerFire();
 
 public:
 	AFPSCharacter();
@@ -63,6 +70,8 @@ protected:
 	void MoveRight(float Val);
 
 	virtual void SetupPlayerInputComponent(UInputComponent* InputComponent) override;
+	virtual void Tick(float DeltaTime) override;
+	void GetLifetimeReplicatedProps(TArray< FLifetimeProperty > & OutLifetimeProps) const override;
 
 public:
 	/** Returns Mesh1P subobject **/
@@ -70,6 +79,5 @@ public:
 
 	/** Returns FirstPersonCameraComponent subobject **/
 	UCameraComponent* GetFirstPersonCameraComponent() const { return CameraComponent; }
-
 };
 

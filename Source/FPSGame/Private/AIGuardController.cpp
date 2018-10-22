@@ -4,4 +4,11 @@
 
 
 
+AAIGuardController::AAIGuardController()
+{
 
+}
+void AAIGuardController::OnMoveCompleted(FAIRequestID Id, const FPathFollowingResult& Result)
+{
+
+}

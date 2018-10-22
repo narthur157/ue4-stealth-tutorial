@@ -7,6 +7,7 @@ UDeleteSphereComponent::UDeleteSphereComponent()
 
 void UDeleteSphereComponent::BeginPlay()
 {
+	Super::BeginPlay();
 	OnComponentBeginOverlap.AddDynamic(this, &UDeleteSphereComponent::OnOverlap);
 }
 

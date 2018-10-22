@@ -15,6 +15,7 @@ class FPSGAME_API AAIGuardController : public AAIController
 	GENERATED_BODY()
 	
 	
-	
-	
+public:
+	AAIGuardController();
+	void OnMoveCompleted(FAIRequestID Id, const FPathFollowingResult& Result) override;
 };

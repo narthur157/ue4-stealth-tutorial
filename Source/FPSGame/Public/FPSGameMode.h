@@ -19,10 +19,10 @@ protected:
 	TSubclassOf<AActor> SpectatingViewpointClass;
 
 public:
-	void CompleteMission(APawn* InstigatorPawn);
+	void CompleteMission(APawn* InstigatorPawn, bool bMissionSuccess);
 
 	UFUNCTION(BlueprintImplementableEvent, CAtegory = "GameMode")
-	void OnMissionCompleted(APawn* InstigatorPawn);
+	void OnMissionCompleted(APawn* InstigatorPawn, bool bMissionSuccess);
 };
 
 

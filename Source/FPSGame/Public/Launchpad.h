@@ -6,23 +6,31 @@
 #include "GameFramework/Actor.h"
 #include "Launchpad.generated.h"
 
+class UBoxComponent;
+
 UCLASS()
 class FPSGAME_API ALaunchpad : public AActor
 {
 	GENERATED_BODY()
-	
-public:	
+
+public:
 	// Sets default values for this actor's properties
 	ALaunchpad();
 
 protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
+
+	UPROPERTY(EditDefaultsOnly, Category = "FX")
+	UParticleSystem* LaunchEffect;
+
+	UPROPERTY(EditAnywhere, Category = "Params")
+	int32 BoostStrength = 1000;
+
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UBoxComponent* BoxComp;
+
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UStaticMeshComponent* MeshComp;
 
 public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
-
-	
-	
+	virtual void NotifyActorBeginOverlap(AActor* OtherActor) override;
 };
